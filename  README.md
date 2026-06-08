@@ -4,8 +4,8 @@ Local development environment for the Data Processing Platform. Starts PostgreSQ
 
 ## Requirements
 
-- [Docker](https://www.docker.com/products/docker-desktop) >= 24
-- [Docker Compose](https://docs.docker.com/compose/) >= 2
+- [Docker](https://www.docker.com/products/docker-desktop)
+- [Docker Compose](https://docs.docker.com/compose/)
 
 ## Commands
 
@@ -48,10 +48,17 @@ jdbc:postgresql://localhost:5432/dataprocessing
 | Property | Value |
 |---|---|
 | URL | http://localhost:5050 |
-| Email | `admin@local.dev` |
-| Password | `admin` |
 
-The PostgreSQL server is pre-registered automatically on first start. Open the URL, log in, and the `data-processing-local` server is ready to use in the left panel.
+The PostgreSQL server is pre-registered automatically on first start. Open the URL and the `data-processing-local` server is ready to use in the left panel.
+
+## Database initialisation
+
+On first start, the following scripts run automatically in order:
+
+| Script | Description |
+|---|---|
+| `01_create_roles.sql` | Grants privileges to `devuser` |
+| `02_create_tables.sql` | Creates all application tables |
 
 ## Scripts
 
@@ -63,10 +70,10 @@ Drops and recreates the `dataprocessing` database without touching the Docker vo
 bash scripts/reset-db.sh
 ```
 
-### Restore a SQL dump
+### Seed test files
 
-Restores a `.sql` dump file into the `dataprocessing` database:
+Inserts 10 test files covering all batch processing cases. Optional, run manually when needed:
 
 ```bash
-bash scripts/import-dump.sh path/to/dump.sql
+bash scripts/seed-test-files.sh
 ```
