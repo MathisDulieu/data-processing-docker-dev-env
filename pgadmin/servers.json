@@ -1,0 +1,15 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "data-processing-local",
+      "Group": "Servers",
+      "Host": "postgres",
+      "Port": 5432,
+      "MaintenanceDB": "dataprocessing",
+      "Username": "devuser",
+      "Password": "devpassword",
+      "SSLMode": "prefer",
+      "PassFile": "/tmp/pgpass"
+    }
+  }
+}

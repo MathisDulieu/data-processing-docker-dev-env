@@ -1,0 +1,10 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Dumps
+*.sql.bak
+backups/
+
+# Logs
+*.log
