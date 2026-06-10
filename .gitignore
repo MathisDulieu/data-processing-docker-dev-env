@@ -2,6 +2,9 @@
 .DS_Store
 Thumbs.db
 
+# IDE
+.idea/
+
 # Dumps
 *.sql.bak
 backups/
