@@ -43,3 +43,19 @@ CREATE TABLE rejected_transactions
     reason        TEXT,
     rejected_at   TIMESTAMP DEFAULT NOW()
 );
+
+CREATE TABLE batch_schedules
+(
+    id                BIGSERIAL PRIMARY KEY,
+    enabled           BOOLEAN     NOT NULL DEFAULT true,
+    schedule_type     VARCHAR(50) NOT NULL,
+    cron_expression   VARCHAR(100),
+    fixed_delay_ms    BIGINT,
+    last_execution_at TIMESTAMP,
+    next_execution_at TIMESTAMP,
+    created_at        TIMESTAMP            DEFAULT NOW(),
+    updated_at        TIMESTAMP            DEFAULT NOW()
+);
+
+INSERT INTO batch_schedules(enabled, schedule_type, cron_expression, fixed_delay_ms)
+VALUES (FALSE, 'CRON', '0 0 18 * * *', NULL);
